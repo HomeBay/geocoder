@@ -4,18 +4,18 @@ organization := "com.koddi"
 
 version := "1.1.0"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.13.1"
 
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-encoding", "utf8")
 
-crossScalaVersions := Seq("2.10.4", "2.11.7", "2.12.2")
+crossScalaVersions := Seq("2.10.4", "2.11.7", "2.12.2", "2.13.1")
 
 libraryDependencies ++= scalaxml(scalaVersion.value) ++ scalatest(scalaVersion.value)
 
 def scalaxml(scalaVersion: String) = {
     val lib =
-    if (scalaVersion.startsWith("2.11") || scalaVersion.startsWith("2.12")) {
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
+    if (scalaVersion.startsWith("2.11") || scalaVersion.startsWith("2.12") || scalaVersion.startsWith("2.13")) {
+        "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
     } else {
         null
     }
@@ -30,7 +30,7 @@ def scalaxml(scalaVersion: String) = {
 def scalatest(scalaVersion: String) = {
     Seq((scalaVersion match {
         case "2.10.4" => "org.scalatest" %% "scalatest" % "2.1.3"
-        case _        => "org.scalatest" %% "scalatest" % "3.0.1"
+        case _        => "org.scalatest" %% "scalatest" % "3.0.8"
     }) % "test")
 }
 
