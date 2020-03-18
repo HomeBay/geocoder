@@ -62,16 +62,4 @@ developers := List(
     )
 )
 
-publishTo := {
-    val nexus = "https://oss.sonatype.org/"
-        if (isSnapshot.value)
-            Some("snapshots" at nexus + "content/repositories/snapshots")
-        else
-            Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
-
-// Must be set to PGP keys
-//pgpSecretRing := file("~/.sbt/gpg/secring.asc")
-//pgpPublicRing := file("~/.sbt/gpg/pubring.asc")
-
-
+publishTo := Some("S3 Artifacts" at "s3://homebay-artifacts/ext-releases-local")
